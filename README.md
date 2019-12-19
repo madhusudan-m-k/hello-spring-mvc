@@ -1,4 +1,4 @@
-### Hello Spring MVC Maven Eclipse project
+# Hello Spring MVC Maven Eclipse project
 
 ## Basic Spring MVC setup
 ## H2 Database setupu
