@@ -1,0 +1,10 @@
+FROM tomcat:9.0.30-jdk11-openjdk
+
+RUN rm -rf /usr/local/tomcat/webapps/hello-spring-mvc
+
+RUN rm -rf /usr/local/tomcat/webapps/hello-spring-mvc.war
+
+COPY ./target/hello-spring-mvc.war /usr/local/tomcat/webapps/hello-spring-mvc.war
+
+ENTRYPOINT [ "catalina.sh", "run" ]
+
