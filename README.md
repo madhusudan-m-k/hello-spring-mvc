@@ -1,7 +1,7 @@
 # Hello Spring MVC Maven Eclipse project
 
 ## Basic Spring MVC setup
-## H2 Database setupu
+## H2 Database setup
 ## Maven build to generate WAR file
 ## Integrated with Tomcat Server for dev deployment
 ## TODO: Logging
