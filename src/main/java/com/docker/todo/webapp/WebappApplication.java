@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("com.docker.todo.webapp")
 public class WebappApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebappApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebappApplication.class, args);
+    }
 
 }

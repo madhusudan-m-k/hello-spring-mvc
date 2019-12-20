@@ -1,6 +1,7 @@
 /**
- * 
+ * Security config class.
  */
+
 package com.docker.todo.webapp.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
+ * Spring Security config class.
+ * 
  * @author satya
  *
  */
@@ -18,30 +21,29 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class TodoSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	/**
-	 * 
-	 */
-	public TodoSecurityConfig() {
-		// TODO Auto-generated constructor stub
-	}
+    public TodoSecurityConfig() {
 
-	@Autowired
-	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().
-		withUser("todouser").
-		password("{noop}dummy").
-		roles("USER", "ADMIN");
-		/*and().
-		withUser("admin").
-		password("admin").
-		roles("USER", "ADMIN");*/
-	}
-	
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/login", "/h2-console/**").permitAll().antMatchers("/","/*todo*/**").access("hasRole('USER')").and().formLogin();
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
-	}
+    /**
+     * global security method.
+     * 
+     * @param auth - authentication adapter.
+     * @throws Exception - throws auth expection
+     */
+    @Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("todouser").password("{noop}dummy").roles("USER", "ADMIN");
+        /*
+         * and(). withUser("admin"). password("admin"). roles("USER", "ADMIN");
+         */
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/login", "/h2-console/**").permitAll().antMatchers("/", "/*todo*/**")
+                .access("hasRole('USER')").and().formLogin();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+    }
 }

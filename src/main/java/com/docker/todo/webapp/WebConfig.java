@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.docker.todo.webapp;
 
 import org.springframework.context.annotation.Bean;
@@ -13,27 +10,30 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 /**
+ * Web resource configuration file.
+ * 
  * @author satya
- *
  */
 @EnableWebMvc
 @Configuration
 @ComponentScan("com.docker.todo.webapp")
 public class WebConfig implements WebMvcConfigurer {
 
-	/**
-	 * 
-	 */
-	public WebConfig() {
-		// TODO Auto-generated constructor stub
-	}
+    public WebConfig() {
 
-	@Bean
-	public ViewResolver internalResourceViewResolver() {
-	    InternalResourceViewResolver bean = new InternalResourceViewResolver();
-	    bean.setViewClass(JstlView.class);
-	    bean.setPrefix("/WEB-INF/views/");
-	    bean.setSuffix(".jsp");
-	    return bean;
-	}
+    }
+
+    /**
+     * Configure view component resources.
+     * 
+     * @return Return view resolver for rendering.
+     */
+    @Bean
+    public ViewResolver internalResourceViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/views/");
+        bean.setSuffix(".jsp");
+        return bean;
+    }
 }
