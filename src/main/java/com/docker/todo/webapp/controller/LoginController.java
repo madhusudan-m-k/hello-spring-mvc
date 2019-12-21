@@ -21,7 +21,8 @@ public class LoginController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String login(final Model model) {
-        return "login";
+        // return "doto-list";
+        return "forward:/todo/todolist";
     }
 
     /**
@@ -39,7 +40,7 @@ public class LoginController {
         System.out.println("User Name " + userName);
         System.out.println("Password " + password);
         if (userName != null && userName.trim().length() > 4) {
-            return "welcome";
+            return "list";
         } else {
             return "login";
         }
